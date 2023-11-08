@@ -1,0 +1,18 @@
+[package]
+name = "mspm0l130x"
+version = "0.1.0"
+edition = "2023"
+authors = ["Nicholas Mahoney nicholasmahoney100@gmail.com"]
+description = "Peripheral access crate for TI MSPM0L130X microcontroller"
+keywords = ["no-std", "mspm0", "svd2rust", "embedded", "ti"]
+repository = ""
+license = "MIT OR Apache-2.0"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+cortex-m = "0.6.0"
+cortex-m-rt = { version = "0.6.10", optional = true }
+
+[features]
+rt = ["cortex-m-rt/device"]
