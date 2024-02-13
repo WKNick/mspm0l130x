@@ -4726,25 +4726,6 @@ sectors can be protected with this register.</description>
                     </fields>
                 </register>
                 <register>
-                    <name>CMDWEPROTC</name>
-                    <description>Command Write Erase Protect C Register</description>
-                    <addressOffset>0x11D8</addressOffset>
-                    <size>32</size>
-                    <access>read-write</access>
-                    <fields>
-                        <field>
-                            <name>CMDWEPROTC_VAL</name>
-                            <description>Each bit protects a group of 8 sectors.  When a bit is 1, the associated 8 sectors
-in the flash will be protected from program and erase.  Note that the sectors
-protected with this register start at sector 256 in the flash, where the sectors
-protected by the CMDWEPROTB register end.</description>
-                            <bitOffset>0x0</bitOffset>
-                            <bitWidth>0x0</bitWidth>
-                            <access>read-write</access>
-                        </field>
-                    </fields>
-                </register>
-                <register>
                     <name>CMDWEPROTNM</name>
                     <description>Command Write Erase Protect Non-Main Register</description>
                     <addressOffset>0x1210</addressOffset>
@@ -5185,26 +5166,6 @@ Indicates which banks are not in READ mode.  There is 1 bit per bank.</descripti
                                     <name>STATMODE_BANKNOTINRD_BANK0</name>
                                     <description>BANK0</description>
                                     <value>1</value>
-                                </enumeratedValue>
-                                <enumeratedValue>
-                                    <name>STATMODE_BANKNOTINRD_BANK1</name>
-                                    <description>BANK1</description>
-                                    <value>2</value>
-                                </enumeratedValue>
-                                <enumeratedValue>
-                                    <name>STATMODE_BANKNOTINRD_BANK2</name>
-                                    <description>BANK2</description>
-                                    <value>4</value>
-                                </enumeratedValue>
-                                <enumeratedValue>
-                                    <name>STATMODE_BANKNOTINRD_BANK3</name>
-                                    <description>BANK3</description>
-                                    <value>8</value>
-                                </enumeratedValue>
-                                <enumeratedValue>
-                                    <name>STATMODE_BANKNOTINRD_BANK4</name>
-                                    <description>BANK4</description>
-                                    <value>16</value>
                                 </enumeratedValue>
                             </enumeratedValues>
                         </field>
@@ -35309,7 +35270,7 @@ Note: For safety devices a watchdog reset by software is not possible.</descript
                     <description>Window Watchdog Timer Control Register 0</description>
                     <addressOffset>0x1100</addressOffset>
                     <size>32</size>
-                    <access>read-writeonce</access>
+                    <access>read-write</access>
                     <resetValue>0x00000043</resetValue>
                     <resetMask>0xffffffff</resetMask>
                     <fields>
@@ -35318,7 +35279,7 @@ Note: For safety devices a watchdog reset by software is not possible.</descript
                             <description>Timer Period of the WWDT. These bits select the total watchdog timer count.</description>
                             <bitOffset>0x4</bitOffset>
                             <bitWidth>0x3</bitWidth>
-                            <access>read-writeonce</access>
+                            <access>read-write</access>
                             <enumeratedValues>
                                 <enumeratedValue>
                                     <name>WWDTCTL0_PER_EN_25</name>
@@ -35367,7 +35328,7 @@ Note: For safety devices a watchdog reset by software is not possible.</descript
                             <description>Closed window period in percentage of the timer interval. WWDTCTL1.WINSEL determines the active window setting (WWDTCTL0.WINDOW0 or WWDTCTL0.WINDOW1).</description>
                             <bitOffset>0x8</bitOffset>
                             <bitWidth>0x3</bitWidth>
-                            <access>read-writeonce</access>
+                            <access>read-write</access>
                             <enumeratedValues>
                                 <enumeratedValue>
                                     <name>WWDTCTL0_WINDOW0_SIZE_0</name>
@@ -35416,7 +35377,7 @@ Note: For safety devices a watchdog reset by software is not possible.</descript
                             <description>Window Watchdog Timer Mode</description>
                             <bitOffset>0x10</bitOffset>
                             <bitWidth>0x1</bitWidth>
-                            <access>read-writeonce</access>
+                            <access>read-write</access>
                             <enumeratedValues>
                                 <enumeratedValue>
                                     <name>WWDTCTL0_MODE_WINDOW</name>
@@ -35437,7 +35398,7 @@ The functionality of this bit requires that POLICY.HWCEN = 0. If POLICY.HWCEN = 
 Note: This bit has no effect for the global Window Watchdog as Sleep Mode is not supported.</description>
                             <bitOffset>0x11</bitOffset>
                             <bitWidth>0x1</bitWidth>
-                            <access>read-writeonce</access>
+                            <access>read-write</access>
                             <enumeratedValues>
                                 <enumeratedValue>
                                     <name>WWDTCTL0_STISM_CONT</name>
@@ -35458,7 +35419,7 @@ Writing to this register with an incorrect key activates the WWDT error signal t
 Read as 0.</description>
                             <bitOffset>0x18</bitOffset>
                             <bitWidth>0x8</bitWidth>
-                            <access>writeonce</access>
+                            <access>read-write</access>
                             <enumeratedValues>
                                 <enumeratedValue>
                                     <name>WWDTCTL0_KEY_UNLOCK_W</name>
@@ -35474,14 +35435,14 @@ Divider values from /1 to /8 are possible.
 The clock divider is currently 4 bits. Bit 4 has no effect and should always be written with 0.</description>
                             <bitOffset>0x0</bitOffset>
                             <bitWidth>0x3</bitWidth>
-                            <access>read-writeonce</access>
+                            <access>read-write</access>
                         </field>
                         <field>
                             <name>WWDTCTL0_WINDOW1</name>
                             <description>Closed window period in percentage of the timer interval. WWDTCTL1.WINSEL determines the active window setting (WWDTCTL0.WINDOW0 or WWDTCTL0.WINDOW1).</description>
                             <bitOffset>0xC</bitOffset>
                             <bitWidth>0x3</bitWidth>
-                            <access>read-writeonce</access>
+                            <access>read-write</access>
                             <enumeratedValues>
                                 <enumeratedValue>
                                     <name>WWDTCTL0_WINDOW1_SIZE_0</name>
@@ -43991,6 +43952,73 @@ Static mode operation offers higher accuracy but consumes higher current. Sample
                                     <value>3</value>
                                 </enumeratedValue>
                             </enumeratedValues>
+                        </field>
+                    </fields>
+                </register>
+				<register>
+                    <name>GENCLKCFG</name>
+                    <description>General clock configuration</description>
+                    <addressOffset>0x1138</addressOffset>
+                    <size>32</size>
+                    <access>read-write</access>
+                    <resetValue>0x00000000</resetValue>
+                    <resetMask>0x00000000</resetMask>
+                    <fields>
+                        <field>
+                            <name>GENCLKCFG_EXCLKSRC</name>
+                            <description>EXCLKSRC selects the source for the CLK_OUT external clockoutput block. ULPCLK and MFPCLK require the CLK_OUT divider(EXCLKDIVEN) to be enabled</description>
+                            <bitOffset>0x0</bitOffset>
+                            <bitWidth>0x3</bitWidth>
+                            <access>read-write</access>
+                        </field>
+                        <field>
+                            <name>GENCLKCFG_EXCLKDIVVAL</name>
+                            <description>EXCLKDIVVAL selects the divider value for the divider in the CLK_OUT external clock output block.</description>
+                            <bitOffset>0x4</bitOffset>
+                            <bitWidth>0x3</bitWidth>
+                            <access>read-write</access>
+                        </field>
+						<field>
+                            <name>GENCLKCFG_EXCLKDIVEN</name>
+                            <description>EXCLKDIVEN enables or disables the divider function of the CLK_OUT external clock output block.</description>
+                            <bitOffset>0x7</bitOffset>
+                            <bitWidth>0x1</bitWidth>
+                            <access>read-write</access>
+                        </field>
+						<field>
+                            <name>GENCLKCFG_FCCSELCLK</name>
+                            <description>FCCSELCLK selectes the frequency clock counter (FCC) clock source</description>
+                            <bitOffset>0x10</bitOffset>
+                            <bitWidth>0x4</bitWidth>
+                            <access>read-write</access>
+                        </field>
+						<field>
+                            <name>GENCLKCFG_FCCTRIGSRC</name>
+                            <description>FCCTRIGSRC selects the frequency clock counter (FCC) trigger source</description>
+                            <bitOffset>0x14</bitOffset>
+                            <bitWidth>0x1</bitWidth>
+                            <access>read-write</access>
+                        </field>
+						<field>
+                            <name>GENCLKCFG_FCCLVLTRIG</name>
+                            <description>FCCLVLTRIG selects the frequency clock counter (FCC) trigger mode</description>
+                            <bitOffset>0x15</bitOffset>
+                            <bitWidth>0x1</bitWidth>
+                            <access>read-write</access>
+                        </field>
+						<field>
+                            <name>GENCLKCFG_ANACPUMPCFG</name>
+                            <description>ANACPUMPCFG selects the analog mux charge pump (VBOOST) enable method.</description>
+                            <bitOffset>0x16</bitOffset>
+                            <bitWidth>0x2</bitWidth>
+                            <access>read-write</access>
+                        </field>
+						<field>
+                            <name>GENCLKCFG_FCCTRIGCNT</name>
+                            <description>FCCTRIGCNT specifies the number of trigger clock periods in the trigger window. FCCTRIGCNT=0h (one trigger clock period) up to 1Fh (32 trigger clock periods) may be specified.</description>
+                            <bitOffset>0x18</bitOffset>
+                            <bitWidth>0x5</bitWidth>
+                            <access>read-write</access>
                         </field>
                     </fields>
                 </register>
@@ -64999,6 +65027,101 @@ This selects whether a trigger is enabled or not for this counter
                     </fields>
                 </register>
             </registers></peripheral>
+
+
+
+
+
+
+
+
+
+
+
+<peripheral>
+      <name>_INTERRUPTS</name>
+      <baseAddress>0x00000000</baseAddress>
+
+
+      <interrupt>
+        <name>INT_GROUP0</name>
+        <description>0x00000040</description>
+        <value>0</value>
+      </interrupt>
+	  
+	  <interrupt>
+        <name>INT_GROUP1</name>
+        <description>0x00000044</description>
+        <value>1</value>
+      </interrupt>
+	  
+	  <interrupt>
+        <name>TIMG1</name>
+        <description>0x00000048</description>
+        <value>2</value>
+      </interrupt>
+
+	  <interrupt>
+        <name>ADC0</name>
+        <description>0x00000050</description>
+        <value>4</value>
+      </interrupt>
+	  
+	  <interrupt>
+        <name>SPI0</name>
+        <description>0x00000064</description>
+        <value>9</value>
+      </interrupt>
+	  
+	  <interrupt>
+        <name>UART1</name>
+        <description>0x00000074</description>
+        <value>13</value>
+      </interrupt>
+	  
+	  <interrupt>
+        <name>UART0</name>
+        <description>0x0000007C</description>
+        <value>15</value>
+      </interrupt>
+	  
+	  <interrupt>
+        <name>TIMG0</name>
+        <description>0x00000080</description>
+        <value>16</value>
+      </interrupt>
+	  
+	  <interrupt>
+        <name>TIMG2</name>
+        <description>0x00000088</description>
+        <value>18</value>
+      </interrupt>
+	  
+	  <interrupt>
+        <name>TIMG4</name>
+        <description>0x00000090</description>
+        <value>20</value>
+      </interrupt>
+	  
+	  <interrupt>
+        <name>I2C0</name>
+        <description>0x000000A0</description>
+        <value>24</value>
+      </interrupt>
+	  
+	  <interrupt>
+        <name>I2C1</name>
+        <description>0x000000A4</description>
+        <value>25</value>
+      </interrupt>
+	  
+	  <interrupt>
+        <name>DMA</name>
+        <description>0x000000BC</description>
+        <value>31</value>
+      </interrupt>
+	  
+    </peripheral>
 
    </peripherals>
 </device>

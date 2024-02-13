@@ -1,6 +1,6 @@
 [package]
 name = "mspm0l130x"
-version = "0.1.1"
+version = "0.1.2"
 edition = "2021"
 authors = ["Nicholas Mahoney nicholasmahoney100@gmail.com"]
 description = "Peripheral access crate for TI MSPM0L130X microcontroller"
