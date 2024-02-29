@@ -2,7 +2,7 @@
 
 > Peripheral access API for MSPM0L130X microcontroller
 
-Generated using [svd2rust]. The following registers had to be removed or changed to be compatable with svd2rust such as CMDWEPROTC, STATMODE, and WWDTCTL0. Changes consisted of removing the nonexistent register CMDWEPROTC, and changing STATMODE and WWDTCTL0 to not containe refrences to accesses which did not include "once". Also added GENCLKCFG register and inturrupts to SVD file
+Generated using [svd2rust]. The following registers had to be removed or changed to be compatable with svd2rust such as CMDWEPROTC, STATMODE, and WWDTCTL0. Changes consisted of removing the nonexistent register CMDWEPROTC, and changing STATMODE and WWDTCTL0 to not containe refrences to accesses which did not include "once".
 
 [svd2rust]: https://github.com/japaric/svd2rust
 
