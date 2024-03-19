@@ -43956,6 +43956,59 @@ Static mode operation offers higher accuracy but consumes higher current. Sample
                     </fields>
                 </register>
 				<register>
+                    <name>MCLKCFG</name>
+                    <description>Main clock (MCLK) configuration</description>
+                    <addressOffset>0x1104</addressOffset>
+                    <size>32</size>
+                    <access>read-write</access>
+                    <resetValue>0x00000000</resetValue>
+                    <resetMask>0x00000000</resetMask>
+                    <fields>
+                        <field>
+                            <name>MCLKCFG_MDIV</name>
+                            <description>MDIV may be used to divide the MCLK frequency when MCLK is sourced from SYSOSC</description>
+                            <bitOffset>0x0</bitOffset>
+                            <bitWidth>0x4</bitWidth>
+                            <access>read-write</access>
+                        </field>
+                        <field>
+                            <name>MCLKCFG_FLASHWAIT</name>
+                            <description>FLASHWAIT specifies the number of flash wait states when MCLK is sourced from HSCLK</description>
+                            <bitOffset>0x8</bitOffset>
+                            <bitWidth>0x4</bitWidth>
+                            <access>read-write</access>
+                        </field>
+						<field>
+                            <name>MCLKCFG_USEMFTICK</name>
+                            <description>USEMFTICK specifies whether the 4MHz constant-rate cloc20(MFCLK) to peripherals is enabled or disabled.</description>
+                            <bitOffset>0xC</bitOffset>
+                            <bitWidth>0x1</bitWidth>
+                            <access>read-write</access>
+                        </field>
+						<field>
+                            <name>MCLKCFG_USELFCLK</name>
+                            <description>USELFCLK sets the MCLK source policy. Set USELFCLK to use LFCLK as the MCLK source</description>
+                            <bitOffset>0x14</bitOffset>
+                            <bitWidth>0x1</bitWidth>
+                            <access>read-write</access>
+                        </field>
+						<field>
+                            <name>MCLKCFG_STOPCLKSTBY</name>
+                            <description>STOPCLKSTBY sets the STANDBY mode policy (STANDBY0 or STANDBY1).</description>
+                            <bitOffset>0x15</bitOffset>
+                            <bitWidth>0x1</bitWidth>
+                            <access>read-write</access>
+                        </field>
+						<field>
+                            <name>MCLKCFG_MCLKDEADCHK</name>
+                            <description>MCLKDEADCHK enables or disables the continuous MCLK dead check monitor</description>
+                            <bitOffset>0x16</bitOffset>
+                            <bitWidth>0x1</bitWidth>
+                            <access>read-write</access>
+                        </field>
+                    </fields>
+                </register>
+				<register>
                     <name>GENCLKCFG</name>
                     <description>General clock configuration</description>
                     <addressOffset>0x1138</addressOffset>
@@ -61571,6 +61624,64 @@ Note: DMAEN bit is cleared by hardware based on DMA done signal at the end of da
                                     <name>CTL2_FIFOEN_ENABLE</name>
                                     <description>ENABLE</description>
                                     <value>1</value>
+                                </enumeratedValue>
+                            </enumeratedValues>
+                        </field>
+                    </fields>
+                </register>
+				<register>
+                    <name>CLKFREQ</name>
+                    <description>Sample Clock Frequency Range Register</description>
+                    <addressOffset>0x1110</addressOffset>
+                    <size>32</size>
+                    <access>read-write</access>
+                    <resetValue>0x00000000</resetValue>
+                    <fields>
+                        <field>
+                            <name>CLKFREQ_FRANGE</name>
+                            <description>Frequency Range.</description>
+                            <bitOffset>0x0</bitOffset>
+                            <bitWidth>0x3</bitWidth>
+                            <enumeratedValues>
+                                <enumeratedValue>
+                                    <name>CLKFREQ_FRANGE_RANGE1TO4</name>
+                                    <description>RANGE1TO4</description>
+                                    <value>0</value>
+                                </enumeratedValue>
+                                <enumeratedValue>
+                                    <name>CLKFREQ_FRANGE_RANGE4TO8</name>
+                                    <description>RANGE4TO8</description>
+                                    <value>1</value>
+                                </enumeratedValue>
+                                <enumeratedValue>
+                                    <name>CLKFREQ_FRANGE_RANGE8TO16</name>
+                                    <description>RANGE8TO16</description>
+                                    <value>2</value>
+                                </enumeratedValue>
+                                <enumeratedValue>
+                                    <name>CLKFREQ_FRANGE_RANGE16TO20</name>
+                                    <description>RANGE16TO20</description>
+                                    <value>3</value>
+                                </enumeratedValue>
+                                <enumeratedValue>
+                                    <name>CLKFREQ_FRANGE_RANGE20TO24</name>
+                                    <description>RANGE20TO24</description>
+                                    <value>4</value>
+                                </enumeratedValue>
+                                <enumeratedValue>
+                                    <name>CLKFREQ_FRANGE_RANGE24TO32</name>
+                                    <description>RANGE24TO32</description>
+                                    <value>5</value>
+                                </enumeratedValue>
+                                <enumeratedValue>
+                                    <name>CLKFREQ_FRANGE_RANGE32TO40</name>
+                                    <description>RANGE32TO40</description>
+                                    <value>6</value>
+                                </enumeratedValue>
+                                <enumeratedValue>
+                                    <name>CLKFREQ_FRANGE_RANGE40TO48</name>
+                                    <description>RANGE40TO48</description>
+                                    <value>7</value>
                                 </enumeratedValue>
                             </enumeratedValues>
                         </field>
