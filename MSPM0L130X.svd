@@ -61576,61 +61576,36 @@ Note: DMAEN bit is cleared by hardware based on DMA done signal at the end of da
                         </field>
                     </fields>
                 </register>
-                <register>
-                    <name>CLKFREQ</name>
-                    <description>Sample Clock Frequency Range Register</description>
-                    <addressOffset>0x1110</addressOffset>
+				<register>
+                    <name>CTL3</name>
+                    <description>Control Register 3</description>
+                    <addressOffset>0x110C</addressOffset>
                     <size>32</size>
                     <access>read-write</access>
                     <resetValue>0x00000000</resetValue>
                     <fields>
                         <field>
-                            <name>CLKFREQ_FRANGE</name>
-                            <description>Frequency Range.</description>
+                            <name>CTL3_ASCCHSEL</name>
+                            <description>ASC channel select.</description>
                             <bitOffset>0x0</bitOffset>
-                            <bitWidth>0x3</bitWidth>
-                            <enumeratedValues>
-                                <enumeratedValue>
-                                    <name>CLKFREQ_FRANGE_RANGE1TO4</name>
-                                    <description>RANGE1TO4</description>
-                                    <value>0</value>
-                                </enumeratedValue>
-                                <enumeratedValue>
-                                    <name>CLKFREQ_FRANGE_RANGE4TO8</name>
-                                    <description>RANGE4TO8</description>
-                                    <value>1</value>
-                                </enumeratedValue>
-                                <enumeratedValue>
-                                    <name>CLKFREQ_FRANGE_RANGE8TO16</name>
-                                    <description>RANGE8TO16</description>
-                                    <value>2</value>
-                                </enumeratedValue>
-                                <enumeratedValue>
-                                    <name>CLKFREQ_FRANGE_RANGE16TO20</name>
-                                    <description>RANGE16TO20</description>
-                                    <value>3</value>
-                                </enumeratedValue>
-                                <enumeratedValue>
-                                    <name>CLKFREQ_FRANGE_RANGE20TO24</name>
-                                    <description>RANGE20TO24</description>
-                                    <value>4</value>
-                                </enumeratedValue>
-                                <enumeratedValue>
-                                    <name>CLKFREQ_FRANGE_RANGE24TO32</name>
-                                    <description>RANGE24TO32</description>
-                                    <value>5</value>
-                                </enumeratedValue>
-                                <enumeratedValue>
-                                    <name>CLKFREQ_FRANGE_RANGE32TO40</name>
-                                    <description>RANGE32TO40</description>
-                                    <value>6</value>
-                                </enumeratedValue>
-                                <enumeratedValue>
-                                    <name>CLKFREQ_FRANGE_RANGE40TO48</name>
-                                    <description>RANGE40TO48</description>
-                                    <value>7</value>
-                                </enumeratedValue>
-                            </enumeratedValues>
+                            <bitWidth>0x5</bitWidth>
+                            <access>read-write</access>
+                        </field>
+                        <field>
+                            <name>CTL3_ASCSTIME</name>
+                            <description>ASC sample time compare value select. This is used to select
+between SCOMP0 and SCOMP1 registers for ASC operation.</description>
+                            <bitOffset>0x8</bitOffset>
+                            <bitWidth>0x1</bitWidth>
+                            <access>read-write</access>
+                        </field>
+                        <field>
+                            <name>CTL3_ASCVRSEL</name>
+                            <description>Selects voltage reference for ASC operation. VEREFM must be
+connected to on-board ground when external reference option is selected.</description>
+                            <bitOffset>0xC</bitOffset>
+                            <bitWidth>0x2</bitWidth>
+                            <access>read-write</access>
                         </field>
                     </fields>
                 </register>
@@ -61672,6 +61647,37 @@ Note: Sample clock divide value is not the value written to SCLKDIV but the actu
 Example: VAL = 4, SCLKDIV = 3 implies 32 sample clock cycles.</description>
                             <bitOffset>0x0</bitOffset>
                             <bitWidth>0xA</bitWidth>
+                            <access>read-write</access>
+                        </field>
+                    </fields>
+                </register>
+				<register>
+                    <name>REFCFG</name>
+                    <description>Reference Buffer Configuration Register</description>
+                    <addressOffset>0x111C</addressOffset>
+                    <size>32</size>
+                    <access>read-write</access>
+                    <resetValue>0x00000000</resetValue>
+                    <fields>
+                        <field>
+                            <name>REFCFG_REFEN</name>
+                            <description>Reference buffer enable</description>
+                            <bitOffset>0x0</bitOffset>
+                            <bitWidth>0x1</bitWidth>
+                            <access>read-write</access>
+                        </field>
+					    <field>
+                            <name>REFCFG_REFVSEL</name>
+                            <description>Configures reference buffer output voltage.</description>
+                            <bitOffset>0x1</bitOffset>
+                            <bitWidth>0x1</bitWidth>
+                            <access>read-write</access>
+                        </field>
+						<field>
+                            <name>REFCFG_IBPROG</name>
+                            <description>Configures reference buffer bias current output value.</description>
+                            <bitOffset>0x3</bitOffset>
+                            <bitWidth>0x2</bitWidth>
                             <access>read-write</access>
                         </field>
                     </fields>
